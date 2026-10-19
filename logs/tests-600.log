@@ -1,0 +1,21 @@
+Scanning color, 600 dpi, 8.3 x 11.7 in…
+Scanning… 0%Scanning… 1%Scanning… 2%Scanning… 3%Scanning… 4%Scanning… 5%Scanning… 6%Scanning… 7%Scanning… 8%Scanning… 9%Scanning… 10%Scanning… 11%Scanning… 12%Scanning… 13%Scanning… 14%Scanning… 15%Scanning… 16%Scanning… 17%Scanning… 18%Scanning… 19%Scanning… 20%Scanning… 21%Scanning… 22%Scanning… 23%Scanning… 24%Scanning… 25%Scanning… 26%Scanning… 27%Scanning… 28%Scanning… 29%Scanning… 30%Scanning… 31%Scanning… 32%Scanning… 33%Scanning… 34%Scanning… 35%Scanning… 36%Scanning… 37%Scanning… 38%Scanning… 39%Scanning… 40%Scanning… 41%Scanning… 42%Scanning… 43%Scanning… 44%Scanning… 45%Scanning… 46%Scanning… 47%Scanning… 48%Scanning… 49%Scanning… 50%Scanning… 51%Scanning… 52%Scanning… 53%Scanning… 54%Scanning… 55%Scanning… 56%Scanning… 57%Scanning… 58%Scanning… 59%Scanning… 60%Scanning… 61%Scanning… 62%Scanning… 63%Scanning… 64%Scanning… 65%Scanning… 66%Scanning… 67%Scanning… 68%Scanning… 69%Scanning… 70%Scanning… 71%Scanning… 72%Scanning… 73%Scanning… 74%Scanning… 75%Scanning… 76%Scanning… 77%Scanning… 78%Scanning… 79%Scanning… 80%Scanning… 81%Scanning… 82%Scanning… 83%Scanning… 84%Scanning… 85%Scanning… 86%Scanning… 87%Scanning… 88%Scanning… 89%Scanning… 90%Scanning… 91%Scanning… 92%Scanning… 93%Scanning… 94%Scanning… 95%Scanning… 96%Scanning… 97%Scanning… 98%Scanning… 99%Scanning… 100%
+Saved tests/a4-600.pdf (4960 x 6732 px, 83.2 s)
+       83.22 real         0.55 user         1.22 sys
+           425672704  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               52936  page reclaims
+                 207  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  74  voluntary context switches
+               10013  involuntary context switches
+          4114171547  instructions retired
+          3913433577  cycles elapsed
+           585221272  peak memory footprint

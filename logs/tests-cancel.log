@@ -1,0 +1,299 @@
+Scanning color, 300 dpi, 8.3 x 11.7 in…
+interface 2 endpoints: 0x05 bulk maxPacket 512, 0x85 bulk maxPacket 512
+using bulk OUT 0x05, bulk IN 0x85
+→ 0x15 (pre-lock) (32 bytes)
+  0000  41 53 50 01 00 00 00 15 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+→ 0x00 Lock (attempt 1) (32 bytes)
+  0000  41 53 50 01 00 00 00 00 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← Lock (attempt 1) reply
+  0000  41 53 50 01 00 00 00 00 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x00  status 0  length 0  (p1 0 p2 0)
+lock granted
+→ 0x08 SetDefaultScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 08 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← SetDefaultScanJobSettings reply
+  0000  41 53 50 01 00 00 00 08 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x08  status 0  length 0  (p1 0 p2 0)
+→ 0x06 GetScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← GetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+   magic OK  msg 0x06  status 0  length 100  (p1 0 p2 0)
+defaults after 0x08:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         600
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1100
+   0x4c  window.right         850
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+job settings:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         300   (was 600)
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1122   (was 1100)
+   0x4c  window.right         827   (was 850)
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+→ 0x07 SetScanJobSettings (132 bytes)
+  0000  41 53 50 01 00 00 00 07 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+  0020  00 00 00 18 00 00 00 06 00 00 00 06 00 00 01 2c
+  0030  00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01
+  0040  00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 00
+  0050  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02
+  0060  00 00 00 00 00 00 00 00 00 00 04 62 00 00 03 3b
+  0070  00 00 00 00 00 00 00 00 00 00 05 dc 00 00 03 52
+  0080  00 00 00 01
+← SetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 07 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x07  status 0  length 0  (p1 0 p2 0)
+→ 0x06 GetScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← GetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+   magic OK  msg 0x06  status 0  length 100  (p1 0 p2 0)
+settings as stored:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         300
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1122
+   0x4c  window.right         827
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+→ 0x02 StartScan (32 bytes)
+  0000  41 53 50 01 00 00 00 02 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← StartScan reply
+  0000  41 53 50 01 00 00 00 02 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x02  status 0  length 0  (p1 0 p2 0)
+  0.00s ← #1 msg 0x09 e_StartJob status 0 length 100
+e_StartJob payload:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         300
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1122
+   0x4c  window.right         827
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+  0.12s ← #2 msg 0x0a e_StartSheet status 0 length 0
+  0.13s ← #3 msg 0x0b e_StartPage status 0 length 0
+  1.16s ← #4 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 0 lines 45 B/comp 1 f4 2480 stride 2480
+        scanner rows are 2480 px, requested 2481 px; using 2480
+  1.22s ← #5 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 45 lines 45 B/comp 1 f4 2480 stride 2480
+  1.29s ← #6 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 90 lines 45 B/comp 1 f4 2480 stride 2480
+  1.35s ← #7 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 135 lines 45 B/comp 1 f4 2480 stride 2480
+  1.42s ← #8 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 180 lines 45 B/comp 1 f4 2480 stride 2480
+  1.49s ← #9 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 225 lines 45 B/comp 1 f4 2480 stride 2480
+  1.55s ← #10 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 270 lines 45 B/comp 1 f4 2480 stride 2480
+  1.62s ← #11 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 315 lines 45 B/comp 1 f4 2480 stride 2480
+  1.68s ← #12 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 360 lines 45 B/comp 1 f4 2480 stride 2480
+  1.75s ← #13 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 405 lines 45 B/comp 1 f4 2480 stride 2480
+  1.81s ← #14 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 450 lines 45 B/comp 1 f4 2480 stride 2480
+  1.88s ← #15 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 495 lines 45 B/comp 1 f4 2480 stride 2480
+  1.94s ← #16 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 540 lines 45 B/comp 1 f4 2480 stride 2480
+  2.01s ← #17 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 585 lines 45 B/comp 1 f4 2480 stride 2480
+  2.07s ← #18 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 630 lines 45 B/comp 1 f4 2480 stride 2480
+  2.14s ← #19 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 675 lines 45 B/comp 1 f4 2480 stride 2480
+  2.21s ← #20 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 720 lines 45 B/comp 1 f4 2480 stride 2480
+  2.27s ← #21 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 765 lines 45 B/comp 1 f4 2480 stride 2480
+  2.34s ← #22 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 810 lines 45 B/comp 1 f4 2480 stride 2480
+  2.40s ← #23 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 855 lines 45 B/comp 1 f4 2480 stride 2480
+  2.47s ← #24 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 900 lines 45 B/comp 1 f4 2480 stride 2480
+  2.53s ← #25 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 945 lines 45 B/comp 1 f4 2480 stride 2480
+  2.60s ← #26 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 990 lines 45 B/comp 1 f4 2480 stride 2480
+  2.66s ← #27 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1035 lines 45 B/comp 1 f4 2480 stride 2480
+  2.73s ← #28 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1080 lines 45 B/comp 1 f4 2480 stride 2480
+  2.79s ← #29 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1125 lines 45 B/comp 1 f4 2480 stride 2480
+  2.86s ← #30 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1170 lines 45 B/comp 1 f4 2480 stride 2480
+  2.93s ← #31 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1215 lines 45 B/comp 1 f4 2480 stride 2480
+  2.99s ← #32 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1260 lines 45 B/comp 1 f4 2480 stride 2480
+  3.06s ← #33 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1305 lines 45 B/comp 1 f4 2480 stride 2480
+  3.12s ← #34 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1350 lines 45 B/comp 1 f4 2480 stride 2480
+  3.19s ← #35 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1395 lines 45 B/comp 1 f4 2480 stride 2480
+  3.25s ← #36 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1440 lines 45 B/comp 1 f4 2480 stride 2480
+  3.32s ← #37 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1485 lines 45 B/comp 1 f4 2480 stride 2480
+  3.38s ← #38 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1530 lines 45 B/comp 1 f4 2480 stride 2480
+  3.45s ← #39 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1575 lines 45 B/comp 1 f4 2480 stride 2480
+  3.51s ← #40 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1620 lines 45 B/comp 1 f4 2480 stride 2480
+  3.58s ← #41 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1665 lines 45 B/comp 1 f4 2480 stride 2480
+  3.65s ← #42 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1710 lines 45 B/comp 1 f4 2480 stride 2480
+  3.71s ← #43 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1755 lines 45 B/comp 1 f4 2480 stride 2480
+  3.78s ← #44 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1800 lines 45 B/comp 1 f4 2480 stride 2480
+  3.84s ← #45 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1845 lines 45 B/comp 1 f4 2480 stride 2480
+  3.91s ← #46 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1890 lines 45 B/comp 1 f4 2480 stride 2480
+  3.97s ← #47 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1935 lines 45 B/comp 1 f4 2480 stride 2480
+  4.04s ← #48 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 1980 lines 45 B/comp 1 f4 2480 stride 2480
+  4.10s ← #49 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2025 lines 45 B/comp 1 f4 2480 stride 2480
+  4.17s ← #50 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2070 lines 45 B/comp 1 f4 2480 stride 2480
+  4.23s ← #51 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2115 lines 45 B/comp 1 f4 2480 stride 2480
+  4.30s ← #52 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2160 lines 45 B/comp 1 f4 2480 stride 2480
+  4.37s ← #53 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2205 lines 45 B/comp 1 f4 2480 stride 2480
+  4.43s ← #54 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2250 lines 45 B/comp 1 f4 2480 stride 2480
+  4.50s ← #55 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2295 lines 45 B/comp 1 f4 2480 stride 2480
+  4.56s ← #56 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2340 lines 45 B/comp 1 f4 2480 stride 2480
+  4.63s ← #57 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2385 lines 45 B/comp 1 f4 2480 stride 2480
+  4.69s ← #58 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2430 lines 45 B/comp 1 f4 2480 stride 2480
+  4.76s ← #59 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2475 lines 45 B/comp 1 f4 2480 stride 2480
+  4.82s ← #60 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2520 lines 45 B/comp 1 f4 2480 stride 2480
+  4.89s ← #61 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2565 lines 45 B/comp 1 f4 2480 stride 2480
+  4.95s ← #62 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2610 lines 45 B/comp 1 f4 2480 stride 2480
+  5.02s ← #63 msg 0x05 e_ScanImageData status 0 length 111624
+        data: type 10 first line 2655 lines 45 B/comp 1 f4 2480 stride 2480
+Cancelling…            
+→ 0x03 CancelScanJob (32 bytes)
+  0000  41 53 50 01 00 00 00 03 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  9.74s ← #64 msg 0x04 e_AbortScanJob status 0 length 0  [after cancel]
+scanner aborted the job after cancel
+→ 0x01 Unlock (32 bytes)
+  0000  41 53 50 01 00 00 00 01 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← Unlock reply
+  0000  41 53 50 01 00 00 00 01 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x01  status 0  length 0  (p1 0 p2 0)
+
+Cancelled. The scanner was stopped and unlocked.

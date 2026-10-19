@@ -1,0 +1,11 @@
+# build outputs
+/m1132scan
+/probe
+*.bak
+# scan output and raw captures (may contain personal documents)
+*.pdf
+*.png
+*.jpg
+*.raw
+*.bin
+.DS_Store

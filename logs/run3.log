@@ -1,0 +1,625 @@
+interface 2 endpoints: 0x05 bulk maxPacket 512, 0x85 bulk maxPacket 512
+using bulk OUT 0x05, bulk IN 0x85
+→ 0x15 (pre-lock) (32 bytes)
+  0000  41 53 50 01 00 00 00 15 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+→ 0x00 Lock (attempt 1) (32 bytes)
+  0000  41 53 50 01 00 00 00 00 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← Lock (attempt 1) reply
+  0000  41 53 50 01 00 00 00 00 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x00  status 0  length 0  (p1 0 p2 0)
+lock granted
+→ 0x08 SetDefaultScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 08 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← SetDefaultScanJobSettings reply
+  0000  41 53 50 01 00 00 00 08 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x08  status 0  length 0  (p1 0 p2 0)
+→ 0x06 GetScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← GetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+   magic OK  msg 0x06  status 0  length 100  (p1 0 p2 0)
+defaults after 0x08:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         600
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1100
+   0x4c  window.right         850
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+job settings to send:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         300   (was 600)
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1100
+   0x4c  window.right         827   (was 850)
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+→ 0x07 SetScanJobSettings (132 bytes)
+  0000  41 53 50 01 00 00 00 07 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+  0020  00 00 00 18 00 00 00 06 00 00 00 06 00 00 01 2c
+  0030  00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01
+  0040  00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 00
+  0050  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02
+  0060  00 00 00 00 00 00 00 00 00 00 04 4c 00 00 03 3b
+  0070  00 00 00 00 00 00 00 00 00 00 05 dc 00 00 03 52
+  0080  00 00 00 01
+← SetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 07 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x07  status 0  length 0  (p1 0 p2 0)
+→ 0x06 GetScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← GetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+   magic OK  msg 0x06  status 0  length 100  (p1 0 p2 0)
+settings as stored by the scanner:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         300
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1100
+   0x4c  window.right         827
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+→ 0x02 StartScan (32 bytes)
+  0000  41 53 50 01 00 00 00 02 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← StartScan reply
+  0000  41 53 50 01 00 00 00 02 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x02  status 0  length 0  (p1 0 p2 0)
+  0.00s ← packet #1  msg 0x09 e_StartJob  status 0  length 100  p1 0 p2 0
+   e_StartJob payload (applied settings):
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         300
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1100
+   0x4c  window.right         827
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+  0.12s ← packet #2  msg 0x0a e_StartSheet  status 0  length 0  p1 0 p2 0
+  0.13s ← packet #3  msg 0x0b e_StartPage  status 0  length 0  p1 0 p2 0
+  1.16s ← packet #4  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 0  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+     first bytes:
+  0000  f2 ee f1 f4 ef f2 f3 f3 f2 f5 f6 f5 f1 f5 f4 f3
+  0010  f7 f6 fa f6 f5 f4 f8 f1 f3 f6 f5 f6 f3 f6 f4 f0
+  1.23s ← packet #5  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 45  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+     first bytes:
+  0000  fa fb fa fa f9 fa fc fd fe fd fb fa fa fa fb f8
+  0010  fc f8 fe fb fb fc fa fc fd fd fd fc fb fc f9 fb
+  1.29s ← packet #6  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 90  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+     first bytes:
+  0000  fa f9 fa fa fb fa fe fd fc fb fd ff fc f9 f9 fb
+  0010  f9 fa fb fa f7 f8 f6 f5 f8 fc fe fd fb fe fc fb
+  1.36s ← packet #7  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 135  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.42s ← packet #8  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 180  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.49s ← packet #9  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 225  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.55s ← packet #10  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 270  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.62s ← packet #11  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 315  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.68s ← packet #12  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 360  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.75s ← packet #13  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 405  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.81s ← packet #14  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 450  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.88s ← packet #15  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 495  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  1.95s ← packet #16  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 540  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.01s ← packet #17  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 585  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.08s ← packet #18  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 630  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.14s ← packet #19  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 675  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.21s ← packet #20  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 720  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.27s ← packet #21  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 765  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.34s ← packet #22  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 810  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.40s ← packet #23  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 855  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.47s ← packet #24  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 900  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.53s ← packet #25  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 945  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.60s ← packet #26  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 990  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.67s ← packet #27  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1035  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.73s ← packet #28  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1080  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.80s ← packet #29  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1125  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.86s ← packet #30  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1170  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.93s ← packet #31  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1215  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  2.99s ← packet #32  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1260  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.06s ← packet #33  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1305  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.12s ← packet #34  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1350  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.19s ← packet #35  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1395  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.25s ← packet #36  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1440  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.32s ← packet #37  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1485  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.39s ← packet #38  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1530  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.45s ← packet #39  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1575  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.52s ← packet #40  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1620  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.58s ← packet #41  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1665  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.65s ← packet #42  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1710  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.71s ← packet #43  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1755  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.78s ← packet #44  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1800  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.84s ← packet #45  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1845  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.91s ← packet #46  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1890  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  3.97s ← packet #47  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1935  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.04s ← packet #48  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 1980  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.11s ← packet #49  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2025  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.17s ← packet #50  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2070  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.24s ← packet #51  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2115  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.30s ← packet #52  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2160  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.37s ← packet #53  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2205  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.43s ← packet #54  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2250  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.50s ← packet #55  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2295  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.56s ← packet #56  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2340  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.63s ← packet #57  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2385  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.69s ← packet #58  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2430  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.76s ← packet #59  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2475  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.83s ← packet #60  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2520  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.89s ← packet #61  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2565  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  4.96s ← packet #62  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2610  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.02s ← packet #63  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2655  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.09s ← packet #64  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2700  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.15s ← packet #65  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2745  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.22s ← packet #66  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2790  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.28s ← packet #67  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2835  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.35s ← packet #68  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2880  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.41s ← packet #69  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2925  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.48s ← packet #70  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 2970  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.55s ← packet #71  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3015  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.61s ← packet #72  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3060  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.68s ← packet #73  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3105  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.74s ← packet #74  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3150  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.81s ← packet #75  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3195  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.87s ← packet #76  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3240  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  5.94s ← packet #77  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3285  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.00s ← packet #78  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3330  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.07s ← packet #79  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3375  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.13s ← packet #80  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3420  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.20s ← packet #81  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3465  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.27s ← packet #82  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3510  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.33s ← packet #83  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3555  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.40s ← packet #84  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3600  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.46s ← packet #85  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3645  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.53s ← packet #86  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3690  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.59s ← packet #87  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3735  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.66s ← packet #88  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3780  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.72s ← packet #89  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3825  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.79s ← packet #90  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3870  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.85s ← packet #91  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3915  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.92s ← packet #92  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 3960  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  6.99s ← packet #93  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4005  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.05s ← packet #94  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4050  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.12s ← packet #95  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4095  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.18s ← packet #96  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4140  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.25s ← packet #97  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4185  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.31s ← packet #98  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4230  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.38s ← packet #99  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4275  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.44s ← packet #100  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4320  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.51s ← packet #101  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4365  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.57s ← packet #102  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4410  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.64s ← packet #103  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4455  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.70s ← packet #104  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4500  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.77s ← packet #105  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4545  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.84s ← packet #106  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4590  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.90s ← packet #107  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4635  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  7.97s ← packet #108  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4680  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.03s ← packet #109  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4725  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.10s ← packet #110  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4770  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.16s ← packet #111  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4815  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.23s ← packet #112  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4860  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.29s ← packet #113  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4905  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.36s ← packet #114  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4950  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.42s ← packet #115  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 4995  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.49s ← packet #116  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5040  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.56s ← packet #117  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5085  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.62s ← packet #118  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5130  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.69s ← packet #119  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5175  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.75s ← packet #120  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5220  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.82s ← packet #121  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5265  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.88s ← packet #122  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5310  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  8.95s ← packet #123  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5355  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.01s ← packet #124  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5400  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.08s ← packet #125  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5445  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.14s ← packet #126  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5490  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.21s ← packet #127  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5535  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.28s ← packet #128  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5580  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.34s ← packet #129  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5625  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.41s ← packet #130  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5670  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.47s ← packet #131  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5715  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.54s ← packet #132  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5760  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.60s ← packet #133  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5805  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.67s ← packet #134  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5850  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.73s ← packet #135  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5895  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.80s ← packet #136  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5940  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.86s ← packet #137  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 5985  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+  9.93s ← packet #138  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6030  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.00s ← packet #139  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6075  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.06s ← packet #140  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6120  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.13s ← packet #141  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6165  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.19s ← packet #142  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6210  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.26s ← packet #143  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6255  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.32s ← packet #144  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6300  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.39s ← packet #145  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6345  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.45s ← packet #146  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6390  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.52s ← packet #147  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6435  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.58s ← packet #148  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6480  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.65s ← packet #149  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6525  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.72s ← packet #150  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6570  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.78s ← packet #151  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6615  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.85s ← packet #152  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6660  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.91s ← packet #153  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6705  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 10.98s ← packet #154  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6750  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.04s ← packet #155  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6795  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.11s ← packet #156  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6840  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.17s ← packet #157  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6885  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.24s ← packet #158  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6930  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.30s ← packet #159  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 6975  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.37s ← packet #160  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7020  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.44s ← packet #161  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7065  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.50s ← packet #162  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7110  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.57s ← packet #163  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7155  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.63s ← packet #164  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7200  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.70s ← packet #165  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7245  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.76s ← packet #166  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7290  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.83s ← packet #167  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7335  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.89s ← packet #168  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7380  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 11.96s ← packet #169  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7425  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.02s ← packet #170  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7470  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.09s ← packet #171  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7515  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.16s ← packet #172  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7560  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.22s ← packet #173  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7605  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.29s ← packet #174  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7650  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.35s ← packet #175  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7695  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.42s ← packet #176  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7740  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.48s ← packet #177  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7785  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.55s ← packet #178  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7830  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.61s ← packet #179  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7875  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.68s ← packet #180  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7920  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.74s ← packet #181  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 7965  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.81s ← packet #182  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8010  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.88s ← packet #183  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8055  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 12.94s ← packet #184  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8100  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.01s ← packet #185  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8145  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.07s ← packet #186  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8190  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.14s ← packet #187  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8235  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.20s ← packet #188  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8280  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.27s ← packet #189  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8325  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.33s ← packet #190  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8370  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.40s ← packet #191  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8415  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.46s ← packet #192  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8460  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.53s ← packet #193  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8505  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.60s ← packet #194  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8550  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.66s ← packet #195  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8595  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.73s ← packet #196  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8640  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.79s ← packet #197  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8685  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.86s ← packet #198  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8730  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.92s ← packet #199  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8775  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 13.99s ← packet #200  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8820  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.05s ← packet #201  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8865  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.12s ← packet #202  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8910  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.18s ← packet #203  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 8955  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.25s ← packet #204  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9000  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.32s ← packet #205  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9045  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.38s ← packet #206  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9090  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.45s ← packet #207  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9135  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.51s ← packet #208  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9180  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.58s ← packet #209  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9225  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.64s ← packet #210  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9270  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.71s ← packet #211  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9315  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.77s ← packet #212  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9360  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.84s ← packet #213  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9405  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.90s ← packet #214  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9450  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 14.97s ← packet #215  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9495  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.04s ← packet #216  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9540  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.10s ← packet #217  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9585  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.17s ← packet #218  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9630  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.23s ← packet #219  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9675  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.30s ← packet #220  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9720  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.36s ← packet #221  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9765  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.43s ← packet #222  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9810  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.49s ← packet #223  msg 0x05 e_ScanImageData  status 0  length 111624  p1 0 p2 0
+     data header: type 10  f1 9855  rows 45  bytes/comp 1  f4 2480  px/row 2480  → 3 ch, 7440 B/row, 111600 data bytes
+ 15.52s ← packet #224  msg 0x0e e_EndPage  status 0  length 0  p1 0 p2 0
+ 15.52s ← packet #225  msg 0x0d e_EndSheet  status 0  length 0  p1 0 p2 0
+ 15.54s ← packet #226  msg 0x0c e_EndJob  status 0  length 0  p1 0 p2 0
+scan finished: 226 packets, 24552000 pixel bytes, 9900 rows reported
+image: 2480 x 3300 px, 3 channel(s), data type 10, line-interleaved RGB
+wrote run3-a4-300/scan.png
+→ 0x01 Unlock (32 bytes)
+  0000  41 53 50 01 00 00 00 01 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← Unlock reply
+  0000  41 53 50 01 00 00 00 01 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x01  status 0  length 0  (p1 0 p2 0)
+done

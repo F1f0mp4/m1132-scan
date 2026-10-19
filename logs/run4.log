@@ -1,0 +1,275 @@
+interface 2 endpoints: 0x05 bulk maxPacket 512, 0x85 bulk maxPacket 512
+using bulk OUT 0x05, bulk IN 0x85
+→ 0x15 (pre-lock) (32 bytes)
+  0000  41 53 50 01 00 00 00 15 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+→ 0x00 Lock (attempt 1) (32 bytes)
+  0000  41 53 50 01 00 00 00 00 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← Lock (attempt 1) reply
+  0000  41 53 50 01 00 00 00 00 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x00  status 0  length 0  (p1 0 p2 0)
+lock granted
+→ 0x08 SetDefaultScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 08 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← SetDefaultScanJobSettings reply
+  0000  41 53 50 01 00 00 00 08 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x08  status 0  length 0  (p1 0 p2 0)
+→ 0x06 GetScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← GetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+   magic OK  msg 0x06  status 0  length 100  (p1 0 p2 0)
+defaults after 0x08:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         600
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom        1100
+   0x4c  window.right         850
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           1
+job settings to send:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         150   (was 600)
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom         300   (was 1100)
+   0x4c  window.right         400   (was 850)
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           0   (was 1)
+→ 0x07 SetScanJobSettings (132 bytes)
+  0000  41 53 50 01 00 00 00 07 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+  0020  00 00 00 18 00 00 00 06 00 00 00 06 00 00 00 96
+  0030  00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01
+  0040  00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 00
+  0050  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02
+  0060  00 00 00 00 00 00 00 00 00 00 01 2c 00 00 01 90
+  0070  00 00 00 00 00 00 00 00 00 00 05 dc 00 00 03 52
+  0080  00 00 00 00
+← SetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 07 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x07  status 0  length 0  (p1 0 p2 0)
+→ 0x06 GetScanJobSettings (32 bytes)
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← GetScanJobSettings reply
+  0000  41 53 50 01 00 00 00 06 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 64 00 00 00 00 00 00 00 00
+   magic OK  msg 0x06  status 0  length 100  (p1 0 p2 0)
+settings as stored by the scanner:
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         150
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom         300
+   0x4c  window.right         400
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           0
+→ 0x02 StartScan (32 bytes)
+  0000  41 53 50 01 00 00 00 02 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← StartScan reply
+  0000  41 53 50 01 00 00 00 02 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x02  status 0  length 0  (p1 0 p2 0)
+  0.00s ← packet #1  msg 0x09 e_StartJob  status 0  length 100  p1 0 p2 0
+   e_StartJob payload (applied settings):
+   0x00  Gamma          24
+   0x04  Brightness           6
+   0x08  Contrast           6
+   0x0c  Resolution         150
+   0x10  XYScale.x_num           1
+   0x14  XYScale.x_den           1
+   0x18  XYScale.y_num           1
+   0x1c  XYScale.y_den           1
+   0x20  Sharp           0
+   0x24  Smooth           0
+   0x28  BitsPerPixel           8
+   0x2c  reserved1           0
+   0x30  reserved2           0
+   0x34  reserved3           0
+   0x38  reserved4           0
+   0x3c  DataType           2
+   0x40  window.top           0
+   0x44  window.left           0
+   0x48  window.bottom         300
+   0x4c  window.right         400
+   0x50  Scannable.top           0
+   0x54  Scannable.left           0
+   0x58  Scannable.bottom        1500
+   0x5c  Scannable.right         850
+   0x60  ColorType           0
+  0.12s ← packet #2  msg 0x0a e_StartSheet  status 0  length 0  p1 0 p2 0
+  0.12s ← packet #3  msg 0x0b e_StartPage  status 0  length 0  p1 0 p2 0
+  0.52s ← packet #4  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 0  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+     first bytes:
+  0000  ea ec ed ec ef ee ef f1 f0 f1 ef f0 f1 f0 f1 ee
+  0010  f0 f0 f3 f1 ee ed ed f1 f0 f1 f0 ee ef ec ec ed
+  0.55s ← packet #5  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 10  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+     first bytes:
+  0000  f2 f3 f4 f7 f7 f6 f8 f9 f8 f9 f8 f7 f8 f9 f9 f8
+  0010  fa fa f9 f8 f9 f9 f8 fb f9 fc fa fb fa fa fb fe
+  0.58s ← packet #6  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 20  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+     first bytes:
+  0000  f1 f3 f4 f6 f8 f7 f5 f7 f8 f9 f8 f8 f8 f8 fb fa
+  0010  fa f9 f8 fa fb fb fa fa f9 f9 f6 f8 fa fa fa fb
+  0.61s ← packet #7  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 30  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.64s ← packet #8  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 40  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.67s ← packet #9  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 50  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.70s ← packet #10  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 60  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.74s ← packet #11  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 70  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.77s ← packet #12  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 80  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.80s ← packet #13  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 90  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.83s ← packet #14  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 100  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.86s ← packet #15  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 110  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.89s ← packet #16  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 120  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.92s ← packet #17  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 130  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.95s ← packet #18  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 140  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  0.98s ← packet #19  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 150  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.01s ← packet #20  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 160  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.04s ← packet #21  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 170  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.07s ← packet #22  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 180  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.10s ← packet #23  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 190  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.11s ← packet #24  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 200  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.13s ← packet #25  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 210  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.16s ← packet #26  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 220  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.19s ← packet #27  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 230  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.22s ← packet #28  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 240  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.25s ← packet #29  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 250  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.29s ← packet #30  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 260  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.32s ← packet #31  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 270  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.35s ← packet #32  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 280  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.38s ← packet #33  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 290  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.41s ← packet #34  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 300  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.44s ← packet #35  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 310  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.47s ← packet #36  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 320  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.50s ← packet #37  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 330  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.53s ← packet #38  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 340  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.56s ← packet #39  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 350  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.59s ← packet #40  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 360  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.62s ← packet #41  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 370  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.65s ← packet #42  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 380  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.68s ← packet #43  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 390  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.71s ← packet #44  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 400  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.74s ← packet #45  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 410  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.77s ← packet #46  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 420  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.80s ← packet #47  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 430  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.82s ← packet #48  msg 0x05 e_ScanImageData  status 0  length 6104  p1 0 p2 0
+     data header: type 6  f1 440  rows 10  bytes/comp 1  f4 600  px/row 608  → 1 ch, 608 B/row, 6080 data bytes
+  1.84s ← packet #49  msg 0x0e e_EndPage  status 0  length 0  p1 0 p2 0
+  1.84s ← packet #50  msg 0x0d e_EndSheet  status 0  length 0  p1 0 p2 0
+  1.85s ← packet #51  msg 0x0c e_EndJob  status 0  length 0  p1 0 p2 0
+scan finished: 51 packets, 273600 pixel bytes, 450 rows reported
+image: 600 x 450 px, 1 channel(s), data type 6
+wrote run4-gray/scan.png
+→ 0x01 Unlock (32 bytes)
+  0000  41 53 50 01 00 00 00 01 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+← Unlock reply
+  0000  41 53 50 01 00 00 00 01 00 00 00 00 00 00 00 00
+  0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   magic OK  msg 0x01  status 0  length 0  (p1 0 p2 0)
+done
